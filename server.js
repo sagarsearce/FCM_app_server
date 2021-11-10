@@ -26,7 +26,7 @@ App.post('/notify', async (req, res) => {
             tokens: owner.data().tokens,
             notification: {
                 title: "order placed successfully",
-                body: `Hey ${owner.data().fullName}, your new order has been placed successfully with ${order.data().items.length} items and ${order.data().total}$. Thank you for shopping with us..`,
+                body: `Hey ${owner.data().fullName}, your new order has been placed successfully with ${Object.values(order.data().items).length} items and ${order.data().total}$. Thank you for shopping with us..`,
             },
         });
         res.status(200).json(JSON.stringify({ message: 'notification sent successfully' }));
