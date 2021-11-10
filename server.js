@@ -1,7 +1,7 @@
 var admin = require("firebase-admin");
 const express = require('express')
 const App = express()
-const Port = 3000
+const Port = process.env.PORT || 3000
 App.use(express.json());
 
 var serviceAccount = require("/Users/sagar.dhandhalya/Documents/Learning/Flutter/flutter_projects/app_sever/flutter-firebase-demo-c5029-firebase-adminsdk-o6rh9-670019004b.json");
