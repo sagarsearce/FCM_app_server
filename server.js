@@ -18,6 +18,7 @@ App.post('/notify', async (req, res) => {
     console.log('/notify hit !!!');
     const { userId, orderId } = req.body;
     try {
+        console.log(userId, orderId);
         const owner = await admin.firestore().collection("users").doc(userId).get();
         const order = await admin.firestore().collection("orders").doc(orderId).get();
         console.log(owner.data().tokens[0]);
@@ -32,6 +33,7 @@ App.post('/notify', async (req, res) => {
         res.status(200).json(JSON.stringify({ message: 'notification sent successfully' }));
         return;
     } catch (e) {
+        console.log(e);
         res.status(300).json(JSON.stringify({ message: 'Some error !!' }));
         return;
     }
