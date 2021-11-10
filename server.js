@@ -25,8 +25,8 @@ App.post('/notify', async (req, res) => {
         await admin.messaging().sendMulticast({
             tokens: owner.data().tokens,
             notification: {
-                title: "order placed.",
-                body: `Hey, thank you ${owner.data().fullName} for choosing us,your new order is placed of ${order.data().total}$ we will notify you after sheeping.`,
+                title: "order placed successfully",
+                body: `Hey ${owner.data().fullName}, your new order has been placed successfully with ${order.data().items.length} items and ${order.data().total}$. Thank you for shopping with us..`,
             },
         });
         res.status(200).json(JSON.stringify({ message: 'notification sent successfully' }));
