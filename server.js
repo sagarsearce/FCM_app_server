@@ -20,12 +20,12 @@ App.post('/notify', async (req, res) => {
     try {
         const owner = await admin.firestore().collection("users").doc(userId).get();
         const order = await admin.firestore().collection("orders").doc(orderId).get();
-        // console.log(owner.data().tokens[0]);
-        // console.log(order.data().status);
+        console.log(owner.data().tokens[0]);
+        console.log(order.data().status);
         await admin.messaging().sendMulticast({
             tokens: owner.data().tokens,
             notification: {
-                title: "order placed successfully",
+                title: "Order placed successfully",
                 body: `Hey ${owner.data().fullName}, your new order has been placed successfully with ${Object.values(order.data().items).length} items and ${order.data().total}$. Thank you for shopping with us..`,
             },
         });
